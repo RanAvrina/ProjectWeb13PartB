@@ -1,8 +1,8 @@
 document.addEventListener("DOMContentLoaded", function () {
 
-    // ===========================
+    
     // 1. Login check
-    // ===========================
+    
     const loggedUser = localStorage.getItem("loggedUser");
     if (!loggedUser) {
         window.location.href = "login.html";
@@ -15,9 +15,9 @@ document.addEventListener("DOMContentLoaded", function () {
     teacherNameSpan.textContent = " " + loggedUser;
     teacherSubjectSpan.textContent = "Mathematics"; // change if needed
 
-    // ===========================
+   
     // 2. Students + search + dropdown
-    // ===========================
+
     const students = [
         "Adam Cohen",
         "Noa Levi",
@@ -54,15 +54,16 @@ document.addEventListener("DOMContentLoaded", function () {
         renderStudents(studentSearchInput.value);
     });
 
-    // ===========================
+    
     // 3. Upcoming Classes – cards
-    // ===========================
+    
     const lessons = [
         { date: "2025-12-09", time: "18:30", name: "Noa Perez",   subject: "Science" },
         { date: "2025-12-10", time: "19:00", name: "Dana Levy",   subject: "English" },
         { date: "2025-12-12", time: "17:00", name: "Yossi Cohen", subject: "Math" },
         { date: "2025-12-14", time: "16:00", name: "Ori Mizrahi", subject: "History" },
         { date: "2025-12-15", time: "18:00", name: "Roni Kedem",  subject: "Language" }
+        
     ];
 
     lessons.sort((a, b) => new Date(a.date) - new Date(b.date));
@@ -98,9 +99,9 @@ document.addEventListener("DOMContentLoaded", function () {
         stack.appendChild(card);
     });
 
-    // ===========================
+    
     // 4. General Notes – Sticky Notes
-    // ===========================
+    
     const notesList = document.getElementById("notes-list");
     const noteInput = document.getElementById("new-note-input");
     const addNoteBtn = document.getElementById("add-note-btn");
@@ -143,34 +144,84 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
     notesList.addEventListener("click", function (e) {
+
         // Delete
+
         if (e.target.classList.contains("delete-btn")) {
-            const index = e.target.getAttribute("data-index");
+    const index = e.target.getAttribute("data-index");
+
+    showConfirm("Are you sure you want to delete this note?", function(confirmDelete) {
+        if (confirmDelete) {
             notes.splice(index, 1);
             localStorage.setItem("notes", JSON.stringify(notes));
             renderNotes();
         }
+    });
+}
+        //delete function
+        function showConfirm(message,callback){
+            const modal = document.getElementById("confirm_modal");
+            const modalText = document.getElementById("modal_text");
+            const yesBtn = document.getElementById("confirm-yes");
+            const noBtn = document.getElementById("confirm-no");
+
+            modalText.textContent = message;
+            modal.style.display = "flex";
+
+            yesBtn.onclick = function (){
+                modal.style.display = "none";
+                callback(true);
+            }
+            noBtn.onclick = function() {
+                modal.style.display = "none";
+                callback(false);
+            }
+
+        }
 
         // Edit
+
         if (e.target.classList.contains("edit-btn")) {
             const index = e.target.getAttribute("data-index");
             const currentText = notes[index];
 
-            const newText = prompt("Edit note:", currentText);
-            if (newText === null) return;
-
-            const trimmed = newText.trim();
-            if (trimmed === "") return;
+            editNote(currentText, function(result) {
+        
+        if (result !== null && result !== "") {
+            notes[index] = result;
+            localStorage.setItem("notes", JSON.stringify(notes));
+            renderNotes();
+        }
+    });
 
             notes[index] = trimmed;
             localStorage.setItem("notes", JSON.stringify(notes));
             renderNotes();
         }
     });
+        function editNote(currentText,callback){
+            const modal = document.getElementById("edit_modal");
+            const input = document.getElementById("edit_input");
+            const saveBtn = document.getElementById("edit-save");
+            const cancelBtn = document.getElementById("edit-cancel");
 
-    // ===========================
+            input.value = currentText;
+            modal.style.display = "flex";
+
+            saveBtn.onclick = function () {
+        modal.style.display = "none";
+        callback(input.value.trim());
+         };
+
+         cancelBtn.onclick = function () {
+             modal.style.display = "none";
+             callback(null);
+    };
+
+        }
+    
     // 5. Logout
-    // ===========================
+  
     const logoutBtn = document.getElementById("logout-btn");
     logoutBtn.addEventListener("click", function () {
         localStorage.removeItem("loggedUser");
@@ -178,3 +229,20 @@ document.addEventListener("DOMContentLoaded", function () {
     });
 
 });
+    function updateClock() {
+    const now = new Date();
+    const timeString = now.toLocaleString('he-IL', {
+        weekday: 'long',
+        year: 'numeric',
+        month: '2-digit',
+        day: '2-digit',
+        hour: '2-digit',
+        minute: '2-digit',
+      
+    });
+
+    document.getElementById("current-time").textContent = timeString;
+}
+
+setInterval(updateClock, 1000); // מרענן כל שנייה
+updateClock(); // מריץ פעם ראשונה מיד

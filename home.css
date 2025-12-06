@@ -25,7 +25,13 @@ body {
     border-radius: 12px;
     margin-bottom: 20px;
 }
-
+.time-display {
+    font-size: 14px;
+    margin-top: 3px;
+    color: #e3eaff;
+    font-weight: 500;
+    opacity: 0.9;
+}
 .home-header h1 {
     margin: 0;
     font-size: 22px;
@@ -278,7 +284,7 @@ body {
     border-radius: 6px;
     position: relative;
 
-    font-family: "Shadows Into Light", cursive;
+    font-family:"Shadows Into Light", cursive;
     font-size: 16px;
     color: #333;
 
@@ -306,15 +312,16 @@ body {
 }
 
 .note-item:hover {
-    transform: scale(1.04) rotate(0deg);
-    box-shadow: 0 6px 16px rgba(0,0,0,0.25);
+    transform: scale(1.25) rotate(2deg);
+    box-shadow: 0 12px 28px rgba(0,0,0,0.35);
+    z-index: 10;
 }
 
 /* Delete + Edit buttons */
 .note-item .delete-btn,
 .note-item .edit-btn {
     position: absolute;
-    top: 6px;
+    top: 1px;
     background: none;
     border: none;
     font-size: 14px;
@@ -335,4 +342,68 @@ body {
 .note-item .delete-btn:hover,
 .note-item .edit-btn:hover {
     opacity: 1;
+}
+
+/* modal box*/
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: rgba(0,0,0,0.5);
+    display: none;
+    justify-content: center;
+     align-items: center;
+    z-index: 999;
+    backdrop-filter: blur(3px);
+}
+
+.modal_content {
+    background: #ffffffd8;
+    padding: 25px;
+    border-radius: 12px;
+    width: 300px;
+    text-align: center;
+    box-shadow: 0px 6px 25px rgba(0, 0, 0, 0.2);
+    animation: fadeIn 0.25s ease-out;
+}
+
+.modal_buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+.modal_buttons button {
+    flex: 1;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.2s;
+    font-size: 16px;
+}
+
+#confirm-Yes{
+    background-color:#ef4444;
+    color: white;
+}
+#confirm-yes:hover {
+    background-color: #b91c1c;
+}
+#confirm-no {
+    background-color: #e2e8f0;
+    color: black;
+}
+#confirm-no:hover {
+    background-color: ;
+}
+#edit-save:hover{
+    background-color: #b91c1c;
+}
+#edit-cancel:hover{
+    background-color: #cbd5e1;
 }

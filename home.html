@@ -12,6 +12,8 @@
     <link rel="stylesheet" href="home.css">
 </head>
 <body>
+    
+    
 
 <div class="home-container">
 
@@ -19,9 +21,8 @@
     <header class="home-header">
         <div>
             <h1>Hello Teacher <span id="teacher-name"></span></h1>
-            <p class="teacher-subject">
-                Subject: <span id="teacher-subject"></span>
-            </p>
+           
+            <p id="current-time" class="time-display"></p>
         </div>
 
         <button id="logout-btn">Logout</button>
@@ -66,8 +67,32 @@
         </section>
 
     </main>
+<!-- delete confirmation modal Box-->
+    <div id="confirm_modal" class="modal">
+        <div class="modal_content">
+        
+         <p id="modal_text">Are you sure?</p>
 
-</div>
+         <div class="modal_buttons">
+            <button id="confirm-yes">Yes</button>
+            <button id="confirm-no">Cancel</button>
+         </div>
+
+        </div>
+    </div>
+
+    <div id="edit_modal" class="modal">
+        <div class="modal_content">
+            <p id="edit_notes"></p>
+            <input id="edit_input" type="text">
+
+            <div class="modal_buttons">
+                <button id="edit-save">Save</button>
+                <button id="edit-cancel">Cancel</button>
+            </div>
+        </div>
+    </div>
+
 
 <script src="home.js"></script>
 </body>
