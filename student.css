@@ -1,7 +1,7 @@
 /* student.css */
 
 /* GLOBAL */
-* { box-sizing: border-box; }
+*{ box-sizing: border-box; }
 
 body{
   margin: 0;
@@ -70,8 +70,7 @@ header button:hover{
   flex: 1;
 }
 
-.left-column,
-.right-column{
+.left-column, .right-column{
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -368,41 +367,22 @@ body{
 }
 
 /* ===== Header ===== */
-header,
-.student-header{
+header{
   background: linear-gradient(135deg, var(--primary), var(--accent1));
   color: white;
   box-shadow: var(--shadow);
 }
 
 /* ===== Main cards / sections ===== */
-.student-info,
-.lessons-section,
-.goals-section,
-.notes-section,
-.profile-section,
-.section-card{
-  background: linear-gradient(180deg, var(--card), var(--card2));
-  border: 1px solid var(--border);
-  border-radius: 14px;
-  box-shadow: var(--shadow);
-}
+
 
 /* ===== Section titles ===== */
-.student-info h2,
-.lessons-section h2,
-.goals-section h2,
-.notes-section h2,
-.profile-section h2{
+.student-info h2, .lessons-section h2, .goals-section h2, .profile-section h2{
   position: relative;
   padding-bottom: 8px;
 }
 
-.student-info h2::after,
-.lessons-section h2::after,
-.goals-section h2::after,
-.notes-section h2::after,
-.profile-section h2::after{
+.student-info h2::after, .lessons-section h2::after, .goals-section h2::after, .profile-section h2::after{
   content: "";
   position: absolute;
   left: 0;
@@ -414,18 +394,14 @@ header,
 }
 
 /* ===== Inputs ===== */
-input,
-textarea,
-select{
+input, textarea, select{
   border: 1px solid var(--border);
   border-radius: 8px;
   padding: 8px 10px;
   background: white;
 }
 
-input:focus,
-textarea:focus,
-select:focus{
+input:focus, textarea:focus, select:focus{
   outline: none;
   border-color: var(--accent1);
   box-shadow: 0 0 0 3px rgba(167,139,250,0.18);
@@ -449,41 +425,22 @@ button:hover{
 }
 
 /* Danger buttons (delete) */
-button.delete,
-button.remove,
-.delete-btn{
+button.delete, button.remove, .delete-btn{
   background: linear-gradient(135deg, #ef4444, #b91c1c);
 }
 
 /* ===== Lessons list ===== */
-.lesson-card,
-.lesson-item{
-  border-left: 6px solid rgba(167,139,250,0.55);
-  padding-left: 12px;
-}
 
-.lesson-card:nth-child(2n),
-.lesson-item:nth-child(2n){
-  border-left-color: rgba(34,197,94,0.55);
-}
-
-.lesson-card:nth-child(3n),
-.lesson-item:nth-child(3n){
-  border-left-color: rgba(245,158,11,0.55);
-}
 
 /* ===== Notes / goals ===== */
-.note,
-.goal,
-.goal-item{
+.goal, .goal-item{
   background: #fff8a8;
   border-radius: 10px;
   box-shadow: 0 10px 24px rgba(15,23,42,0.18);
 }
 
 /* ===== Footer ===== */
-footer,
-.app-footer{
+footer, .app-footer{
   color: rgba(15,23,42,0.55);
   text-align: center;
 }
@@ -535,8 +492,7 @@ body::before{
 }
 
 /* ---------- Header: glass + gradient + chip look ---------- */
-header,
-.student-header{
+header{
   background: linear-gradient(135deg, rgba(37,99,235,0.92), rgba(167,139,250,0.88));
   color: #fff;
   border-radius: 18px;
@@ -547,8 +503,7 @@ header,
 }
 
 /* animated glow line */
-header::after,
-.student-header::after{
+header::after, .student-header::after{
   content:"";
   position:absolute;
   top:-30%;
@@ -567,34 +522,10 @@ header::after,
 }
 
 /* ---------- Sections/cards: “premium glass cards” + top gradient border ---------- */
-main section,
-.students-section,
-.calendar-section,
-.notes-section,
-.student-info,
-.profile-section,
-.lessons-section,
-.goals-section,
-.section-card{
-  background: linear-gradient(180deg, var(--glass), var(--glass2));
-  border: 1px solid var(--border);
-  border-radius: 18px;
-  box-shadow: var(--shadow2);
-  backdrop-filter: blur(10px);
-  position: relative;
-  overflow: hidden;
-}
+
 
 /* top neon border (gives color without being loud) */
-main section::before,
-.students-section::before,
-.calendar-section::before,
-.notes-section::before,
-.student-info::before,
-.profile-section::before,
-.lessons-section::before,
-.goals-section::before,
-.section-card::before{
+.student-info::before, .profile-section::before, .lessons-section::before, .goals-section::before, .section-card::before{
   content:"";
   position:absolute;
   left: 0;
@@ -669,53 +600,22 @@ button:active{
 }
 
 /* Danger buttons */
-.delete-btn,
-button.delete,
-button.remove{
+.delete-btn, button.delete, button.remove{
   background: linear-gradient(135deg, #ef4444, #b91c1c);
   box-shadow: 0 14px 28px rgba(239,68,68,0.22);
 }
 
 /* ---------- Lesson cards: neon side rail + hover lift ---------- */
-.card, .lesson-card, .lesson-item{
-  border-radius: 18px !important;
-  position: relative;
-  overflow: hidden;
-  box-shadow: 0 14px 30px rgba(15,23,42,0.12);
-  transition: 0.18s ease;
-}
+
 
 /* neon rail */
-.card::before, .lesson-card::before, .lesson-item::before{
-  content:"";
-  position:absolute;
-  left:0; top:0;
-  width: 6px; height: 100%;
-  background: linear-gradient(180deg, var(--p1), var(--p2));
-  opacity: 0.85;
-}
-.card:nth-child(2n)::before,
-.lesson-card:nth-child(2n)::before,
-.lesson-item:nth-child(2n)::before{
-  background: linear-gradient(180deg, var(--p3), var(--p4));
-}
 
-.card:hover, .lesson-card:hover, .lesson-item:hover{
-  transform: translateY(-2px);
-  box-shadow: 0 20px 46px rgba(15,23,42,0.16);
-}
 
 /* ---------- Notes: “premium sticky” + tiny tape effect ---------- */
-.note-item, .note{
-  border-radius: 16px;
-  border: 1px solid rgba(0,0,0,0.06);
-  box-shadow: 0 18px 35px rgba(15,23,42,0.16);
-  position: relative;
-  overflow: hidden;
-}
+
 
 /* tape */
-.note-item::after, .note::after{
+.note::after{
   content:"";
   position:absolute;
   top: 10px;
@@ -738,7 +638,7 @@ button.remove{
 .modal_content{
   border-radius: 18px;
   border: 1px solid rgba(255,255,255,0.22);
-  background: linear-gradient(180deg, rgba(125, 112, 30, 0.88), rgba(255,255,255,0.66));
+  background: linear-gradient(180deg, rgba(230, 229, 219, 0.88), rgba(255,255,255,0.66));
   box-shadow: 0 30px 70px rgba(0,0,0,0.32);
 }
 
@@ -750,7 +650,7 @@ footer, .app-footer{
 
 /* ---------- Mobile tweaks ---------- */
 @media (max-width: 750px){
-  header, .student-header{
+  header{
     border-radius: 16px;
   }
   button{

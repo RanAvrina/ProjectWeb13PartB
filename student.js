@@ -1,17 +1,9 @@
-// student.js
-
-// ===============================
-// BASIC STUDENT DATA
-// ===============================
 var studentName = localStorage.getItem("selectedStudent") || "Student Name";
 document.getElementById("studentName").textContent = studentName;
 
 var goalsKey = "goals_" + studentName;
 var summariesKey = "summaries_" + studentName;
 
-// ===============================
-// UI MESSAGES (no browser alerts)
-// ===============================
 function showMsg(el, text, type) {
   if (!el) return;
   el.textContent = text;
@@ -26,9 +18,6 @@ function hideMsg(el) {
   el.className = "form-msg";
 }
 
-// ===============================
-// PROFILE (VIEW)
-// ===============================
 renderStudentProfile();
 
 function renderStudentProfile() {
@@ -44,17 +33,11 @@ function renderStudentProfile() {
   document.getElementById("profileGrade").textContent = profile.grade || "—";
 }
 
-// ===============================
-// MODAL HELPERS
-// ===============================
 function closeModalById(id) {
   var m = document.getElementById(id);
   if (m) m.style.display = "none";
 }
 
-// ===============================
-// CONFIRM MODAL
-// ===============================
 function showConfirm(message, callback) {
   var modal = document.getElementById("confirm_modal");
   var text = document.getElementById("modal_text");
@@ -80,9 +63,6 @@ function showConfirm(message, callback) {
   };
 }
 
-// ===============================
-// BUTTON BINDING
-// ===============================
 bindStudentButtons();
 
 function bindStudentButtons() {
@@ -93,9 +73,6 @@ function bindStudentButtons() {
   if (deleteBtn) deleteBtn.onclick = deleteStudent;
 }
 
-// ===============================
-// EDIT STUDENT
-// ===============================
 function openEditStudent() {
   var editModal = document.getElementById("edit_modal");
   var emailEl = document.getElementById("edit_email");
@@ -134,9 +111,6 @@ function openEditStudent() {
   };
 }
 
-// ===============================
-// DELETE STUDENT (ONE CONFIRM ONLY)
-// ===============================
 function normalizeName(x) {
   return String(x || "").trim().toLowerCase();
 }
@@ -173,7 +147,6 @@ function deleteStudent() {
 
     var target = normalizeName(studentName);
 
-    // delete keys
     var keysToDelete = [];
     for (var i = 0; i < localStorage.length; i++) {
       var k = localStorage.key(i);
@@ -190,13 +163,11 @@ function deleteStudent() {
     }
     for (var d = 0; d < keysToDelete.length; d++) localStorage.removeItem(keysToDelete[d]);
 
-    // remove from possible students lists
     removeStudentFromListKey("students_db", studentName);
     removeStudentFromListKey("students", studentName);
     removeStudentFromListKey("students_list", studentName);
     removeStudentFromListKey("all_students", studentName);
 
-    // remove from global schedule
     var allLessonsRaw = localStorage.getItem("all_lessons");
     if (allLessonsRaw) {
       var allLessons;
@@ -217,9 +188,6 @@ function deleteStudent() {
   });
 }
 
-// ===============================
-// SUMMARIES
-// ===============================
 let summaries = [];
 
 function loadSummaries() {
@@ -268,9 +236,6 @@ function renderSummaries() {
   });
 }
 
-// ===============================
-// SAVE SUMMARY (with custom message)
-// ===============================
 function saveLessonSummary() {
   const msgEl = document.getElementById("summaryMsg");
   hideMsg(msgEl);
@@ -287,7 +252,6 @@ function saveLessonSummary() {
   saveSummaries();
   renderSummaries();
 
-  // save also to teacher global schedule
   saveLessonToAllLessons(date, subject, null);
 
   document.getElementById("lessonSummary").value = "";
@@ -296,9 +260,6 @@ function saveLessonSummary() {
   setTimeout(() => hideMsg(msgEl), 2000);
 }
 
-// ===============================
-// SAVE TO TEACHER's GLOBAL SCHEDULE
-// ===============================
 function saveLessonToAllLessons(date, subject, time) {
   const allLessons = JSON.parse(localStorage.getItem("all_lessons")) || [];
 
@@ -313,10 +274,9 @@ function saveLessonToAllLessons(date, subject, time) {
   allLessons.push(lesson);
   localStorage.setItem("all_lessons", JSON.stringify(allLessons));
 }
+const d = document.getElementById("nextLessonDate");
+if (d) d.min = new Date().toISOString().split("T")[0];
 
-// ===============================
-// ADD TO SCHEDULE (with custom message)
-// ===============================
 function saveNextLesson() {
   const msgEl = document.getElementById("scheduleMsg");
   hideMsg(msgEl);
@@ -337,9 +297,6 @@ function saveNextLesson() {
   setTimeout(() => hideMsg(msgEl), 2000);
 }
 
-// ===============================
-// GOALS
-// ===============================
 var goals = [];
 loadGoals();
 

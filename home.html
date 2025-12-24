@@ -1,122 +1,99 @@
-
 <!DOCTYPE html>
 <html lang="en" dir="ltr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Teacher Home Page</title>
-
-    <!-- Google Font for handwriting in Sticky Notes -->
-   
-<link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
-
-    <link rel="stylesheet" href="home.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Teacher Home Page</title>
+  <link href="https://fonts.googleapis.com/css2?family=Varela+Round&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="home.css">
 </head>
-<body>   
 
-    <div class="home-container">
-
-    <!-- Header -->
+<body>
+  <div class="home-container">
     <header class="home-header">
-        <div>
-            <h1>Hello Teacher <span id="teacher-name"></span></h1>
-            <p class="teacher-subject">
-                Subject: <span id="teacher-subject"></span>
-            </p>
-            <p id="current-time" class="time-display"></p>
-        </div>
-
-        <button id="logout-btn">Logout</button>
+      <div>
+        <h1>Hello Teacher <span id="teacher-name"></span></h1>
+        <p class="teacher-subject">Subject: <span id="teacher-subject"></span></p>
+        <p id="current-time" class="time-display"></p>
+      </div>
+      <button id="logout-btn">Logout</button>
     </header>
 
     <main class="home-main">
+      <section class="students-section">
+        <h2>My Students</h2>
 
-        <!-- 1. Students list + search + dropdown -->
-        <section class="students-section">
-            <h2>My Students</h2>
-
-            <div class="search-bar">
-                <label for="student-search">Search student:</label>
-                <input type="text" id="student-search" placeholder="Type a student name">
-            </div>
-
-            <div class="selected-student-box">
-                
-            </div>
-
-            <div class="students-dropdown">
-                
-                <ul id="students-list"></ul>
-            </div>
-            <div class="add-student-box">
-  <h3>Add Student</h3>
-<form id="add-student-form">
-  <input id="new-student-name" name="fullName" type="text" placeholder="Full name" required minlength="2" />
-
-  <input id="new-student-phone" name="phone" type="tel" placeholder="Phone" required pattern="^[0-9+\-\s]{7,15}$" maxlength="15" title="Enter a valid phone number" />
-
-  <input id="new-student-email" name="email" type="email" placeholder="Email" required/>
-
-  <input id="new-student-grade" name="grade"  type="text" placeholder="Grade / Level" required  maxlength="20"
-  />
-
-  <button id="add-student-btn" type="submit">Add Student</button>
-</form>
-
-
-
-        </section>
-        <!-- 2. Upcoming Classes – cards -->
-        <section class="calendar-section">
-            <h2>Upcoming Classes</h2>
-            <div id="stack" class="stack-container"></div>
-        </section>
-
-        <!-- 3. General Notes – Sticky Notes -->
-        <section class="notes-section">
-            <h2>General Notes</h2>
-
-            <div class="add-note-box">
-                <input type="text" id="new-note-input" placeholder="Type a new note">
-                <button id="add-note-btn">Add</button>
-            </div>
-
-            <ul id="notes-list"></ul>
-        </section>
-
-    </main>
-<!-- delete confirmation modal Box-->
-    <div id="confirm_modal" class="modal">
-        <div class="modal_content">
-        
-         <p id="modal_text">Are you sure?</p>
-
-         <div class="modal_buttons">
-            <button id="confirm-yes">Yes</button>
-            <button id="confirm-no">Cancel</button>
-         </div>
-
+        <div class="search-bar">
+          <label for="student-search">Search student:</label>
+          <input type="text" id="student-search" placeholder="Type a student name">
         </div>
+
+        <div class="selected-student-box"></div>
+
+        <div class="students-dropdown">
+          <ul id="students-list"></ul>
+        </div>
+
+        <div class="add-student-box">
+          <h3>Add Student</h3>
+
+          <form id="add-student-form">
+            <input id="new-student-name" name="fullName" type="text" placeholder="Full name" required minlength="2">
+            <input id="new-student-phone" name="phone" type="tel" placeholder="Phone" required pattern="^[0-9+\-\s]{7,15}$" maxlength="15" title="Enter a valid phone number">
+            <input id="new-student-email" name="email" type="email" placeholder="Email" required>
+            <input id="new-student-grade" name="grade" type="text" placeholder="Grade / Level" required maxlength="20">
+            <button id="add-student-btn" type="submit">Add Student</button>
+          </form>
+        </div>
+      </section>
+
+      <section class="calendar-section">
+        <h2>Upcoming Classes</h2>
+        <div id="stack" class="stack-container"></div>
+      </section>
+
+      <section class="notes-section">
+        <h2>General Notes</h2>
+
+        <div class="add-note-box">
+          <input type="text" id="new-note-input" placeholder="Type a new note">
+          <button id="add-note-btn">Add</button>
+        </div>
+
+        <ul id="notes-list"></ul>
+      </section>
+    </main>
+
+    <div id="confirm_modal" class="modal">
+      <div class="modal_content">
+        <p id="modal_text">Are you sure?</p>
+        <div class="modal_buttons">
+          <button id="confirm-yes">Yes</button>
+          <button id="confirm-no">Cancel</button>
+        </div>
+      </div>
     </div>
 
     <div id="edit_modal" class="modal">
-        <div class="modal_content">
-            <p id="edit_notes"></p>
-            <input id="edit_input" type="text">
-
-            <div class="modal_buttons">
-                <button id="edit-save">Save</button>
-                <button id="edit-cancel">Cancel</button>
-            </div>
+      <div class="modal_content">
+        <p id="edit_notes"></p>
+        <input id="edit_input" type="text">
+        <div class="modal_buttons">
+          <button id="edit-save">Save</button>
+          <button id="edit-cancel">Cancel</button>
         </div>
+      </div>
     </div>
-     <footer class="app-footer">
-        <span> 
-           TutorHub - a place to learn, grow, and feel at home
-            <br>
-            © 2025 TutorHub</span>
-    </footer>
 
-<script src="home.js"></script>
+    <footer class="app-footer">
+      <span>
+        TutorHub - a place to learn, grow, and feel at home
+        <br>
+        © 2025 TutorHub
+      </span>
+    </footer>
+  </div>
+
+  <script src="home.js"></script>
 </body>
 </html>
