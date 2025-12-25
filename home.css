@@ -36,7 +36,7 @@
 
 html, body { height: 100%; }
 
-/* ---------- Base layout ---------- */
+/*  Base layout  */
 body{
   margin: 0;
   padding: 0;
@@ -62,7 +62,7 @@ h1,h2,h3{
   padding: 20px;
 }
 
-/* ---------- Header ---------- */
+/*  Header  */
 .home-header{
   display: flex;
   justify-content: space-between;
@@ -106,14 +106,14 @@ h1,h2,h3{
   background: rgba(255,255,255,0.24);
 }
 
-/* ---------- Main layout ---------- */
+/*  Main layout  */
 .home-main{
   display: grid;
   grid-template-columns: 1.2fr 1fr;
   gap: 20px;
 }
 
-/* ---------- Sections (cards) ---------- */
+/*  Sections (cards)  */
 .students-section,
 .calendar-section,
 .notes-section,
@@ -138,7 +138,7 @@ h1,h2,h3{
   background: radial-gradient(500px 180px at 15% 0%, rgba(37,99,235,0.10), transparent 60%);
 }
 
-/* ---------- Students section ---------- */
+/*  Students section  */
 .students-section{
   padding: 15px 20px;
   box-shadow: 0 0 8px rgba(0,0,0,0.05);
@@ -217,7 +217,7 @@ h1,h2,h3{
   border-color: rgba(37,99,235,0.25);
 }
 
-/* ---------- Add Student block ---------- */
+/*  Add Student block  */
 .students-section h3{
   margin: 14px 0 10px;
   font-size: 14px;
@@ -284,7 +284,7 @@ h1,h2,h3{
   }
 }
 
-/* ---------- Upcoming Classes ---------- */
+/*  Upcoming Classes  */
 .calendar-section{
   padding: 15px 20px;
   box-shadow: 0 0 8px rgba(0,0,0,0.05);
@@ -374,7 +374,7 @@ h1,h2,h3{
   color: #1e3a8a;
 }
 
-/* ---------- General Notes (Sticky) ---------- */
+/*  General Notes (Sticky)  */
 .notes-section{
   padding: 15px 20px;
   box-shadow: 0 0 8px rgba(0,0,0,0.05);
@@ -429,8 +429,6 @@ h1,h2,h3{
   gap: 12px;
 }
 
-/* Sticky items (same design, no !important) */
-/* Made selector more specific to win over any generic .note-item rules */
 .notes-section #notes-list .note-item{
   background: #fff8a8;
   font-family: "Shadows Into Light","Varela Round", cursive;
@@ -491,7 +489,7 @@ h1,h2,h3{
 .note-item .delete-btn:hover,
 .note-item .edit-btn:hover{ opacity: 1; }
 
-/* ---------- Modals ---------- */
+/*  Modals  */
 .modal{
   position: fixed;
   top: 0;
@@ -549,7 +547,7 @@ h1,h2,h3{
 #edit-save:hover{ background-color: #b91c1c; }
 #edit-cancel:hover{ background-color:#cbd5e1; }
 
-/* ---------- Footer ---------- */
+/*  Footer  */
 .app-footer{
   bottom: 14px;
   width: 100%;
@@ -560,7 +558,7 @@ h1,h2,h3{
   letter-spacing: 0.04em;
 }
 
-/* ---------- Responsive ---------- */
+/*  Responsive  */
 @media (max-width: 750px){
   .home-main{ grid-template-columns: 1fr; }
   .students-section{ grid-row: auto; }

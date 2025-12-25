@@ -1,34 +1,26 @@
-/* student.css (clean - same look) */
-
 /* GLOBAL */
 * { box-sizing: border-box; }
 
-/* THEME VARS (only what's used in the active theme) */
+/* THEME VARS */
 :root{
   --ink:#0b1220;
   --muted:#64748b;
 
-  --p1:#2563eb;   /* blue */
-  --p2:#a78bfa;   /* purple */
-  --p3:#22c55e;   /* green */
-  --p4:#f59e0b;   /* amber */
+  --p1:#2563eb;
+  --p2:#a78bfa;
 
   --shadow1: 0 18px 45px rgba(15,23,42,0.14);
-  --shadow2: 0 10px 28px rgba(15,23,42,0.10);
 }
 
-/* BODY (merged: base layout + final background) */
 body{
   margin: 0;
   font-family: "Poppins", sans-serif;
   scroll-behavior: smooth;
 
-  /* footer always at bottom */
   min-height: 100vh;
   display: flex;
   flex-direction: column;
 
-  /* active theme look */
   color: var(--ink);
   background:
     radial-gradient(1100px 700px at 10% 15%, rgba(167,139,250,0.30), transparent 58%),
@@ -39,7 +31,6 @@ body{
   overflow-x: hidden;
 }
 
-/* dotted texture overlay */
 body::before{
   content:"";
   position: fixed;
@@ -51,7 +42,6 @@ body::before{
   background-size: 18px 18px;
 }
 
-/* HEADER (merged: base layout + final look) */
 header{
   color: #ffffff;
   padding: 16px 28px;
@@ -59,7 +49,6 @@ header{
   justify-content: space-between;
   align-items: center;
 
-  /* active theme look */
   background: linear-gradient(135deg, rgba(37,99,235,0.92), rgba(167,139,250,0.88));
   border-radius: 18px;
   box-shadow: var(--shadow1);
@@ -68,7 +57,6 @@ header{
   overflow: hidden;
 }
 
-/* animated glow line */
 header::after{
   content:"";
   position:absolute;
@@ -80,6 +68,7 @@ header::after{
   transform: rotate(18deg);
   animation: headerSweep 6.5s ease-in-out infinite;
 }
+
 @keyframes headerSweep{
   0%{ left:-60%; opacity:0; }
   12%{ opacity:1; }
@@ -102,7 +91,6 @@ header .title-block span{
   font-weight: 600;
 }
 
-/* header back button stays white (more specific than button{}) */
 header button{
   background: #ffffff;
   color: #1f3af5;
@@ -126,7 +114,7 @@ header button:hover{
   grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
   gap: 20px;
   align-items: start;
-  flex: 1; /* pushes footer down */
+  flex: 1;
 }
 
 .left-column, .right-column{
@@ -182,7 +170,7 @@ header button:hover{
   margin-top: 12px;
 }
 
-/* INPUTS (single definitive style – same as the active theme) */
+/* INPUTS */
 input, textarea, select{
   border: 1px solid rgba(148,163,184,0.50);
   background: rgba(255,255,255,0.88);
@@ -202,7 +190,6 @@ input:focus, textarea:focus, select:focus{
     0 14px 30px rgba(15,23,42,0.12);
 }
 
-/* TEXTAREA – no dragging */
 textarea{
   width: 100%;
   min-height: 80px;
@@ -227,7 +214,6 @@ textarea{
   transform: translateY(-1px);
 }
 
-/* default buttons (used by Add / Save etc.) */
 button{
   background: linear-gradient(135deg, var(--p1), var(--p2));
   color: white;
@@ -249,7 +235,6 @@ button:active{
   transform: translateY(0px) scale(0.99);
 }
 
-/* Danger buttons */
 .delete-btn, button.delete, button.remove{
   background: linear-gradient(135deg, #ef4444, #b91c1c);
   box-shadow: 0 14px 28px rgba(239,68,68,0.22);
@@ -294,7 +279,6 @@ button:active{
   color: #6b7280;
 }
 
-/* small scrollbar */
 .history-list::-webkit-scrollbar{ width: 6px; }
 .history-list::-webkit-scrollbar-thumb{
   background: #cbd5f5;
@@ -309,7 +293,7 @@ button:active{
   display: flex;
   align-items: center;
   justify-content: space-between;
-  background: #fff8a8; /* this is what the active theme enforces */
+  background: #fff8a8;
   border-radius: 10px;
   padding: 8px 10px;
   font-size: 14px;
@@ -414,22 +398,6 @@ button:active{
   border: 1px solid #bbf7d0;
 }
 
-/* tape */
-.note::after{
-  content:"";
-  position:absolute;
-  top: 10px;
-  left: 50%;
-  transform: translateX(-50%) rotate(-2deg);
-  width: 88px;
-  height: 18px;
-  border-radius: 6px;
-  background: rgba(255,255,255,0.42);
-  border: 1px solid rgba(133, 83, 83, 0.22);
-  box-shadow: 0 10px 18px rgba(15,23,42,0.12);
-  opacity: 0.9;
-}
-
 /* FOOTER */
 footer, .app-footer{
   text-align: center;
@@ -439,7 +407,6 @@ footer, .app-footer{
   background: transparent;
 }
 
-/* Mobile tweaks (kept same breakpoint) */
 @media (max-width: 750px){
   header{ border-radius: 16px; }
   button{ border-radius: 999px; }

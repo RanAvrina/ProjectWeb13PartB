@@ -1,4 +1,4 @@
-/* ===== רקע כללי ===== */
+
 
 * {
     box-sizing: border-box;
@@ -20,17 +20,14 @@ body {
     position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;       /* תמיד ברוחב המסך */
-    height: 100vh;      /* תמיד בגובה המסך */
-    object-fit: cover;  /* מבטיח שהתמונה תמלא את המסך בלי להתעוות */
+    width: 100vw;       
+    height: 100vh;      
+    object-fit: cover;  
     z-index: -1;
 
-    /* אנימציה להזזת הרקע */
     animation: slide-bg 10s linear infinite alternate;
 }
 
-
-/* אפשרות: שכבה שקצת מבהירה/מרככת את התמונה */
 body::before {
     content: "";
     position: fixed;
@@ -40,7 +37,7 @@ body::before {
     z-index: 0;
 }
 
-/* ===== קופסת ההתחברות ===== */
+/*  login box */
 
 .login-container {
     position: relative;
@@ -107,7 +104,7 @@ button:hover {
     display: none;
 }
 
-/* ===== אנימציה של הרקע ===== */
+/* background animation */
 
 @keyframes slide-bg {
     0% {

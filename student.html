@@ -1,30 +1,45 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  
   <meta charset="UTF-8" />
   <title>Student Dashboard</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet" />
+
+  
   <link rel="stylesheet" href="student.css" />
 </head>
 
 <body>
+ 
   <header>
     <div class="title-block">
       <span>Student Dashboard</span>
+      
       <span id="studentName">Student Name</span>
     </div>
+
+    <!-- Navigate back to home page -->
     <button onclick="window.location.href='home.html'">← Back</button>
   </header>
 
+  <!-- Main page layout -->
   <div class="main-container">
+
+    <!-- Left side: profile, goals, history -->
     <div class="left-column">
+
+      <!-- Student personal information -->
       <section id="info" class="section">
         <div class="section-header">
           <h3>Personal Information</h3>
           <span class="label">Student Details</span>
         </div>
 
+        <!-- Values are loaded from localStorage -->
         <div class="info-row">
           <span class="label">Email</span>
           <span class="value" id="profileEmail"></span>
@@ -40,12 +55,14 @@
           <span class="value" id="profileGrade"></span>
         </div>
 
+        <!-- Edit / delete actions -->
         <div class="profile-actions">
           <button class="btn" id="updateStudentBtn" type="button">Edit Student</button>
           <button class="btn" id="deleteStudentBtn" type="button">Delete Student</button>
         </div>
       </section>
 
+      <!-- Learning goals section -->
       <section id="goals" class="section">
         <div class="section-header">
           <h3>Learning Goals</h3>
@@ -53,8 +70,10 @@
         </div>
 
         <div id="goalsBox">
+          <!-- Goals list rendered dynamically -->
           <div class="goal-list" id="goalsList"></div>
 
+          <!-- Add new goal -->
           <div class="goal-input-row">
             <input type="text" id="goalText" placeholder="New goal" />
             <button class="btn" onclick="addGoal()">Add</button>
@@ -62,47 +81,60 @@
         </div>
       </section>
 
+      <!-- History of saved lesson summaries -->
       <section id="history" class="section">
         <div class="section-header">
           <h3>Lesson Summaries History</h3>
           <span class="label">All saved summaries</span>
         </div>
+
+        <!-- Filled dynamically from JavaScript -->
         <div id="historyList" class="history-list"></div>
       </section>
     </div>
 
+    <!-- Right side: last lesson + scheduling -->
     <div class="right-column">
+
+      <!-- Last lesson summary form -->
       <section id="lastLesson" class="section">
         <div class="section-header">
           <h3>Last Lesson Summary</h3>
           <span class="label">Update &amp; Save</span>
         </div>
 
+        <!-- Lesson basic details -->
         <div class="lesson-form-row">
           <input type="date" id="lessonDate" />
           <input type="text" id="lessonSubject" placeholder="Subject (e.g. Math)" />
         </div>
 
+        <!-- Lesson content -->
         <textarea id="lessonSummary" placeholder="Write what you covered in the last lesson..."></textarea>
+
+        <!-- Save summary action -->
         <button class="btn" style="margin-top:10px;" onclick="saveLessonSummary()">Save Summary</button>
         <p id="summaryMsg" class="form-msg" style="display:none;"></p>
 
         <hr style="margin:20px 0;" />
 
+        <!-- Schedule next lesson -->
         <h3 style="margin-bottom:6px;">Schedule Next Lesson</h3>
 
         <div class="lesson-form-row">
-          <input type="date" id="nextLessonDate"  min="" />
+          <input type="date" id="nextLessonDate" />
           <input type="time" id="nextLessonTime" />
         </div>
 
         <input type="text" id="nextLessonSubject" placeholder="Lesson subject (Math, English…)" />
+
         <button class="btn" style="margin-top:10px;" onclick="saveNextLesson()">Add to schedule</button>
         <p id="scheduleMsg" class="form-msg" style="display:none;"></p>
       </section>
     </div>
   </div>
 
+  <!-- Confirmation modal used for delete actions -->
   <div id="confirm_modal" class="modal" style="display:none;">
     <div class="modal_content">
       <p id="modal_text">Are you sure?</p>
@@ -113,10 +145,12 @@
     </div>
   </div>
 
+  <!-- Modal for editing student details -->
   <div id="edit_modal" class="modal" style="display:none;">
     <div class="modal_content">
       <p style="margin-top:0; font-weight:600;">Edit student details</p>
 
+      <!-- Edit form -->
       <form id="edit-student-form">
         <input
           id="edit_phone"
@@ -124,9 +158,6 @@
           type="tel"
           placeholder="Phone"
           required
-          pattern="^[0-9+\-\s]{7,15}$"
-          maxlength="15"
-          title="Enter a valid phone number"
         />
 
         <input
@@ -135,8 +166,6 @@
           type="email"
           placeholder="Email"
           required
-          pattern="^[^\s@]+@[^\s@]+\.[^\s@]{2,}$"
-          title="Email must include a valid domain (e.g. name@gmail.com)"
         />
 
         <input
@@ -145,9 +174,6 @@
           type="text"
           placeholder="Grade (1-12)"
           required
-          pattern="^(1[0-2]|[1-9])$"
-          title="Grade must be between 1 and 12"
-          maxlength="2"
         />
       </form>
 
@@ -158,6 +184,7 @@
     </div>
   </div>
 
+  <!-- App footer -->
   <footer class="app-footer">
     <span>
       TutorHub - a place to learn, grow, and feel at home
@@ -166,6 +193,7 @@
     </span>
   </footer>
 
+  
   <script src="student.js"></script>
 </body>
 </html>

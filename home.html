@@ -14,8 +14,10 @@
       <div>
         <h1>Hello Teacher <span id="teacher-name"></span></h1>
         <p class="teacher-subject">Subject: <span id="teacher-subject"></span></p>
+        <!-- Live Clock -->
         <p id="current-time" class="time-display"></p>
       </div>
+      <!-- Logout action handled in JS -->
       <button id="logout-btn">Logout</button>
     </header>
 
@@ -27,16 +29,14 @@
           <label for="student-search">Search student:</label>
           <input type="text" id="student-search" placeholder="Type a student name">
         </div>
-
         <div class="selected-student-box"></div>
-
         <div class="students-dropdown">
           <ul id="students-list"></ul>
         </div>
 
         <div class="add-student-box">
           <h3>Add Student</h3>
-
+          <!-- Add student form  -->
           <form id="add-student-form">
             <input id="new-student-name" name="fullName" type="text" placeholder="Full name" required minlength="2">
             <input id="new-student-phone" name="phone" type="tel" placeholder="Phone" required pattern="^[0-9+\-\s]{7,15}$" maxlength="15" title="Enter a valid phone number">
@@ -46,9 +46,9 @@
           </form>
         </div>
       </section>
-
       <section class="calendar-section">
         <h2>Upcoming Classes</h2>
+        <!-- Upcoming lessons/cards  -->
         <div id="stack" class="stack-container"></div>
       </section>
 
@@ -59,11 +59,12 @@
           <input type="text" id="new-note-input" placeholder="Type a new note">
           <button id="add-note-btn">Add</button>
         </div>
-
+        <!-- Notes list  -->
         <ul id="notes-list"></ul>
       </section>
     </main>
 
+    <!-- confirm modal  -->
     <div id="confirm_modal" class="modal">
       <div class="modal_content">
         <p id="modal_text">Are you sure?</p>
@@ -74,6 +75,7 @@
       </div>
     </div>
 
+    <!-- Edit modal for notes -->
     <div id="edit_modal" class="modal">
       <div class="modal_content">
         <p id="edit_notes"></p>
@@ -93,7 +95,6 @@
       </span>
     </footer>
   </div>
-
   <script src="home.js"></script>
 </body>
 </html>
