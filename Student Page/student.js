@@ -263,7 +263,7 @@ function deleteStudent() {
 
     // go back to home
     localStorage.removeItem("selectedStudent");
-    window.location.href = "home.html";
+    window.location.href = "../Home Page/home.html";
   });
 }
 
