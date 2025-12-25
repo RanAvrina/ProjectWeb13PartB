@@ -138,7 +138,8 @@ document.addEventListener("DOMContentLoaded", function () {
     li.classList.add("student-item");
     li.addEventListener("click", function () {
       localStorage.setItem("selectedStudent", name);
-      window.location.href = "student.html";
+      window.location.href = "../Student Page/student.html";
+
     });
     return li;
   }
@@ -482,7 +483,7 @@ document.addEventListener("DOMContentLoaded", function () {
   if (logoutBtn) {
     logoutBtn.addEventListener("click", function () {
       localStorage.removeItem("loggedUser");
-      window.location.href = "login.html";
+      window.location.href = "../Login Page/login.html";
     });
   }
 });
